@@ -16,6 +16,15 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@pw/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@pw/backend": [
+        "libs/backend/src/index.ts"
+      ],
+      "@pw/ui-shared": [
+        "libs/ui-shared/src/index.ts"
+      ]
     }
   },
   "exclude": [
