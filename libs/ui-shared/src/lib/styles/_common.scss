@@ -7,17 +7,22 @@
     }
 
     &-body {
-        padding: 30px 98px;
-
-        ui-input {
-            margin-bottom: 30px;
-        }
+        padding: 30px 98px 15px 98px;
 
         button {
             margin: auto;
             display: block;
-            padding-left: 50px;
-            padding-right: 50px;
+            min-width: 120px;
         }
     }
+}
+
+.error {
+    input {
+        border-color: #dc3545;
+    }
+}
+
+.invalid-feedback {
+    display: block;
 }

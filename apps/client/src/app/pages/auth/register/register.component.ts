@@ -1,25 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Injector, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Abstract } from '../../abstract';
 
 @Component({
     selector: 'pw-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends Abstract implements OnInit {
 
-    regForm = new FormGroup({
-        username: new FormControl(),
-        email: new FormControl(),
-        pass: new FormControl(),
-        passRep: new FormControl()
+    regForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        pass: ['', Validators.required],
+        passRep: ['', [Validators.required]]
     });
 
-    constructor() { }
+    submitted = false;
+
+    get f(): any { return this.regForm.controls; }
+
+    constructor(injector: Injector, private formBuilder: FormBuilder) {super(injector);}
 
     ngOnInit() {
     }
 
-    register() {}
+    register() {
+        this.submitted = true;
+        if(this.regForm.invalid) {
+            return;
+        }
+
+        console.log(this.regForm);
+    }
 
 }

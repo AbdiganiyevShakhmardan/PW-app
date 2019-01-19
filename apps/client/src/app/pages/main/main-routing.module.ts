@@ -10,17 +10,16 @@ const routes: Routes = [
         component: MainComponent,
         children: [
             {
-                path: '',
-                redirectTo: '/transaction/history',
-                pathMatch: 'full'
-            },
-            {
                 path: 'history',
                 component: TransactionHistoryComponent
             },
             {
                 path: 'transfer',
                 component: TransactionComponent
+            },
+            {
+                path: '',
+                redirectTo: '/transaction/history'
             }
         ]
     }

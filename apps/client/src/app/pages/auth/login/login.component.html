@@ -3,12 +3,24 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header text-center">Вход</div>
-                <div class="card-body" [formGroup]="logForm">
-                    <ui-input formControlName="email" placeholder="Email"></ui-input>
-                    <ui-input formControlName="password" placeholder="Пароль" type="password"></ui-input>
-                    <button class="btn btn-primary" (click)="login()">Войти</button>
+                <form class="card-body" [formGroup]="logForm" (ngSubmit)="login()">
+                    <div class="form-group">
+                        <ui-input formControlName="email" placeholder="Email"></ui-input>
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Not valid email</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <ui-input formControlName="password" placeholder="Пароль" type="password"></ui-input>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">Войти</button>
                     <button class="btn btn-link mt-2" routerLink="/auth/register">Создать аккаунт</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
