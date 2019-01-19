@@ -1,6 +1,8 @@
 <br><br><br>
 <div [formGroup]="form">
-    <input type="text" class="input-group-lg" formControlName="email"> <br><br>
-    <input type="text" class="input-group-lg" formControlName="password"> <br><br>
+    <ui-input formControlName="email"></ui-input>
+    <br>
+    <ui-input formControlName="password"></ui-input>
+    <br>
     <button class="btn btn-info" (click)="login()">Submit</button>
 </div>

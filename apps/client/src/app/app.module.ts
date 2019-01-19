@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { AuthRoutingModule } from './app-routing.module';
 import { BackendModule } from '@pw/backend';
+import { UiSharedModule } from '@pw/ui-shared';
 
 @NgModule({
     declarations: [AppComponent],
@@ -12,7 +13,8 @@ import { BackendModule } from '@pw/backend';
         BrowserModule,
         NxModule.forRoot(),
         AuthRoutingModule,
-        BackendModule
+        BackendModule,
+        UiSharedModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

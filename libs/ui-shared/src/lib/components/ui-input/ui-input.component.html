@@ -1,0 +1,19 @@
+<div class="label left" *ngIf="leftLabel">{{leftLabel}}</div>
+<input [placeholder]="placeholder" *ngIf="type != 'textarea'; else textareaTemplate" [type]="type" [maxLength]="maxLength"
+       [min]="min" [max]="max" [formControl]="control" (blur)="blur.emit($event)" class="form-control typeahead border-primary ui-input-child">
+<div class="label right" *ngIf="rightLabel && !rightLabelTemplate; else rightLabelTemplateWrapper">{{rightLabel}}</div>
+<ng-template #rightLabelTemplateWrapper>
+    <ng-container *ngTemplateOutlet="rightLabel"></ng-container>
+</ng-template>
+
+<ng-template #textareaTemplate>
+    <textarea resize="none" [placeholder]="placeholder" [formControl]="control" (blur)="blur.emit($event)" [cols]="cols" [rows]="rows"></textarea>
+</ng-template>
+
+<ng-template #autocomplete>
+    <div class="autocomplete">
+        <div class="item" *ngFor="let item of autocompleteItems" (click)="selectAutocompleteItem(item)">
+            {{ autocompleteDisplay(item)}}
+        </div>
+    </div>
+</ng-template>
