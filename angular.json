@@ -27,10 +27,11 @@
               "apps/client/src/assets"
             ],
             "styles": [
-              "apps/client/src/styles.scss"
+              "apps/client/src/styles.scss",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": [
-                "./node_modules/alertifyjs/build/alertify.min.js"
+              "./node_modules/alertifyjs/build/alertify.min.js"
             ]
           },
           "configurations": {

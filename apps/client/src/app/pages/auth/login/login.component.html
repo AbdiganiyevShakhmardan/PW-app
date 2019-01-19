@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="card">
-                <div class="card-header text-center">Вход</div>
+                <div class="card-header text-center">Sign in</div>
                 <form class="card-body" [formGroup]="logForm" (ngSubmit)="login()">
                     <div class="form-group">
                         <ui-input formControlName="email" placeholder="Email"></ui-input>
@@ -12,14 +12,14 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <ui-input formControlName="password" placeholder="Пароль" type="password"></ui-input>
+                        <ui-input formControlName="password" placeholder="Password" type="password"></ui-input>
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Войти</button>
-                    <button class="btn btn-link mt-2" routerLink="/auth/register">Создать аккаунт</button>
+                    <button class="btn btn-primary" [disabled]="query">Sign in <i *ngIf="query" class="fa fa-spinner fa-spin"></i></button>
+                    <button class="btn btn-link mt-2" routerLink="/auth/register">Create an account</button>
                 </form>
             </div>
         </div>

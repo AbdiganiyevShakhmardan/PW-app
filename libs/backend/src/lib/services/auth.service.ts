@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../apps/client/src/environments/environment';
-import { SignInRM } from '@pw/core';
+import { SigningResponseModel, SignInRM, SignUpRM } from '@pw/core';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,17 +15,13 @@ export class AuthBackend {
 
     signIn(model: SignInRM) {
         return this.http.post<any>(`${this.apiUrl}/sessions/create`, model).pipe(
-            //map(r => r.code === 0 ? new SignUpResponseModel(r) : new ErrorMessage(r))
+            map(r => r ? new SigningResponseModel(r) : null)
         ).toPromise()
     }
 
-    // signUp(model: SignUpRM) {
-    //     return this.http.post<any>(`${this.apiUrl}/sessions/create`, model).pipe(
-    //         //map(r => r.code === 0 ? new SignUpResponseModel(r) : new ErrorMessage(r))
-    //     ).toPromise()
-    // }
-
-    test() {
-        console.log(this.apiUrl)
+    signUp(model: SignUpRM) {
+        return this.http.post<any>(`${this.apiUrl}/users`, model).pipe(
+            map(r => r ? new SigningResponseModel(r) : null)
+        ).toPromise()
     }
 }

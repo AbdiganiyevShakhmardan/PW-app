@@ -2,37 +2,37 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="card">
-                <div class="card-header text-center">Регистрация</div>
+                <div class="card-header text-center">Sing up</div>
                 <form class="card-body" [formGroup]="regForm" (ngSubmit)="register()">
                     <div class="form-group">
-                        <ui-input formControlName="username" placeholder="Придумайте Nickname" [ngClass]="{ 'error': submitted && f.username.errors }"></ui-input>
+                        <ui-input formControlName="username" placeholder="Pick a username" [ngClass]="{ 'error': submitted && f.username.errors }"></ui-input>
                         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                            <div *ngIf="f.username.errors.required">Nickname is required</div>
+                            <div *ngIf="f.username.errors.required">Username is required</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <ui-input formControlName="email" placeholder="Ваш Email адрес" type="email" [ngClass]="{ 'error': submitted && f.email.errors }"></ui-input>
+                        <ui-input formControlName="email" placeholder="Your email address" type="email" [ngClass]="{ 'error': submitted && f.email.errors }"></ui-input>
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                             <div *ngIf="f.email.errors.required">Email is required</div>
                             <div *ngIf="f.email.errors.email">Not valid email</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <ui-input formControlName="pass" placeholder="Придумайте пароль" type="password" [ngClass]="{ 'error': submitted && f.pass.errors }"></ui-input>
+                        <ui-input formControlName="pass" placeholder="Create a password" type="password" [ngClass]="{ 'error': submitted && f.pass.errors }"></ui-input>
                         <div *ngIf="submitted && f.pass.errors" class="invalid-feedback">
                             <div *ngIf="f.pass.errors.required">Password is required</div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <ui-input formControlName="passRep" placeholder="Повторите пароль" type="password" [ngClass]="{ 'error': submitted && f.passRep.errors }"></ui-input>
+                        <ui-input formControlName="passRep" placeholder="Confirm password" type="password" [ngClass]="{ 'error': submitted && f.passRep.errors }"></ui-input>
                         <div *ngIf="submitted && (f.passRep.errors || regForm.errors)" class="invalid-feedback">
                             <div *ngIf="f.passRep.errors && f.passRep.errors.required">Please repeat the password</div>
                             <div *ngIf="!f.passRep.errors && regForm.errors">Password must match</div>
                         </div>
                     </div>
 
-                    <button class="btn btn-primary">Зарегистрироваться</button>
-                    <button class="btn btn-link mt-2" routerLink="/auth/login">Войти</button>
+                    <button class="btn btn-primary" [disabled]="query">Sign up <i *ngIf="query" class="fa fa-spinner fa-spin"></i></button>
+                    <button class="btn btn-link mt-2" routerLink="/auth/login">Sign in</button>
                 </form>
             </div>
         </div>

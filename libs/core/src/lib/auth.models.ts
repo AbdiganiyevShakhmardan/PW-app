@@ -16,3 +16,11 @@ export class SignUpRM {
         Object.assign(this, ...models);
     }
 }
+
+export class SigningResponseModel {
+    id_token: string;
+
+    constructor(...models: Partial<SigningResponseModel>[]) {
+        Object.assign(this, ...models);
+    }
+}

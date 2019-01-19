@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { AuthorizedService } from '../services/authorized.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class MainGuard implements CanActivate {
+export class AuthorizedGuard implements CanActivate {
 
     constructor(private router: Router, private isAuth: AuthorizedService) {}
 
@@ -16,8 +16,8 @@ export class MainGuard implements CanActivate {
 
         const isAuth = this.isAuth.isAuth();
 
-        if(!isAuth) {
-            this.router.navigate(['/auth/login']);
+        if(isAuth) {
+            this.router.navigate(['/transaction']);
 
             return false;
         }

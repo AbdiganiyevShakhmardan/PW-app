@@ -2,7 +2,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Abstract } from '../../abstract';
 import { ValidationErrors } from '@angular/forms/src/directives/validators';
-// import { SignUpRM } from '@pw/core';
+import { SigningResponseModel, SignUpRM } from '@pw/core';
 
 export const passwordMatcher = (control: AbstractControl): ValidationErrors | null => {
     const password = control.get('pass').value;
@@ -26,6 +26,7 @@ export class RegisterComponent extends Abstract implements OnInit {
     }, { validator: passwordMatcher });
 
     submitted = false;
+    query = false;
 
     get f(): any { return this.regForm.controls; }
 
@@ -40,16 +41,24 @@ export class RegisterComponent extends Abstract implements OnInit {
             return;
         }
 
-        console.log(this.regForm);
+        const model = new SignUpRM({
+            username: this.f.username.value,
+            email: this.f.email.value,
+            password: this.f.pass.value
+        });
 
-        // const model = new SignUpRM({
-        //     username: this.f.username.value,
-        //     email: this.f.email.value,
-        //     password: this.f.pass.value
-        // });
-        //
-        // const res = await this.backend.auth.signUp(model);
-        // console.log(res);
+        this.query = true;
+        try {
+            const res = await this.backend.auth.signUp(model);
+            if(res instanceof SigningResponseModel) {
+                this.isAuth.successAuth(res.id_token);
+                this.router.navigate(['/transaction']);
+            }
+        } catch (e) {
+
+        } finally {
+            this.query = false;
+        }
     }
 
 }
