@@ -7,7 +7,7 @@ const routes: Routes = [
         loadChildren: './pages/auth/auth.module#AuthModule'
     },
     {
-        path: 'main',
+        path: 'transaction',
         loadChildren: './pages/main/main.module#MainModule'
     }
 ];
