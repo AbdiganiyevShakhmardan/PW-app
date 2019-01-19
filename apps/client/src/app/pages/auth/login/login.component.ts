@@ -9,7 +9,7 @@ import { Backend } from '@pw/backend';
 })
 export class LoginComponent implements OnInit {
 
-    form = new FormGroup({
+    logForm = new FormGroup({
         email: new FormControl(),
         password: new FormControl(),
     });
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     }
 
     async login() {
-        const res = await this.backend.auth.login(this.form.value);
+        const res = await this.backend.auth.login(this.logForm.value);
         console.log(res);
     }
 

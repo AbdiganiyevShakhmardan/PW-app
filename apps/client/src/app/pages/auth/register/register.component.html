@@ -1,3 +1,17 @@
-<p>
-  register works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header text-center">Регистрация</div>
+                <div class="card-body" [formGroup]="regForm">
+                    <ui-input formControlName="username" placeholder="Придумайте Nickname"></ui-input>
+                    <ui-input formControlName="email" placeholder="Ваш Email адрес"></ui-input>
+                    <ui-input formControlName="pass" placeholder="Придумайте пароль" type="password"></ui-input>
+                    <ui-input formControlName="passRep" placeholder="Повторите пароль" type="password"></ui-input>
+                    <button class="btn btn-primary" (click)="register()">Зарегистрироваться</button>
+                    <button class="btn btn-link mt-2" routerLink="/auth/login">Войти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

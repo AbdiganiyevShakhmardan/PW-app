@@ -1,3 +1,5 @@
-//:host {
-//    height: 60px;
-//}
+:host {
+    display: block;
+    height: 60px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
+}
