@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionHistoryComponent } from '../transaction-history/transaction-history.component';
 
 @Component({
     selector: 'pw-main',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+    showArrow = false;
+
     constructor() { }
 
     ngOnInit() {
+    }
+
+    activated(a) {
+        if(a instanceof TransactionHistoryComponent) {
+            this.showArrow = false;
+        } else {
+            this.showArrow = true;
+        }
     }
 
 }

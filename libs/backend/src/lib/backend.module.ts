@@ -5,6 +5,8 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
 import { Backend } from './services/backend.service';
 import { AuthBackend } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { TransactionBackend } from './services/transaction.service';
+import { UserBackend } from './services/user.service';
 
 @NgModule({
     imports: [
@@ -31,10 +33,12 @@ export class BackendModule {
                     provide: Backend,
                     useClass: Backend,
                     deps: [
-                        AuthBackend
+                        AuthBackend,
+                        TransactionBackend,
+                        UserBackend
                     ]
                 },
-                AuthBackend
+                AuthBackend, TransactionBackend, UserBackend
             ]
         };
     }

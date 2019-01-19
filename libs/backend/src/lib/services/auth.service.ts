@@ -14,13 +14,13 @@ export class AuthBackend {
     constructor(private http: HttpClient){}
 
     signIn(model: SignInRM) {
-        return this.http.post<any>(`${this.apiUrl}/sessions/create`, model).pipe(
+        return this.http.post<SigningResponseModel>(`${this.apiUrl}/sessions/create`, model).pipe(
             map(r => r ? new SigningResponseModel(r) : null)
         ).toPromise()
     }
 
     signUp(model: SignUpRM) {
-        return this.http.post<any>(`${this.apiUrl}/users`, model).pipe(
+        return this.http.post<SigningResponseModel>(`${this.apiUrl}/users`, model).pipe(
             map(r => r ? new SigningResponseModel(r) : null)
         ).toPromise()
     }

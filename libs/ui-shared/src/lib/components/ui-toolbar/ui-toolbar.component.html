@@ -4,9 +4,15 @@
             <h4>Logo</h4>
         </a>
         <!--<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>-->
-        <div class="d-flex">
-            <button class="btn btn-link" routerLink="/auth/register">Sign up</button>
-            <button type="button" class="btn btn-primary" routerLink="/auth/login">Sign in</button>
+        <div class="d-flex align-items-center">
+            <ng-container *ngIf="!isAuth; else isAuthTemplate">
+                <button class="btn btn-link" routerLink="/auth/register">Sign up</button>
+                <button class="btn btn-primary" routerLink="/auth/login">Sign in</button>
+            </ng-container>
+            <ng-template #isAuthTemplate>
+                <a class="mr-3">His name</a>
+                <button class="btn btn-danger" (click)="signOut()">Sign out</button>
+            </ng-template>
         </div>
     </div>
 </nav>

@@ -13,11 +13,11 @@
         <div class="col-md-6 rightSide">
             <div class="card">
                 <div class="card-header text-center">
-                    <img src="assets/icons/back-arrow.svg" alt="" routerLink="/transaction/history">
+                    <img *ngIf="showArrow" src="assets/icons/back-arrow.svg" alt="" routerLink="/transaction/history">
                     Recent transactions
                 </div>
                 <div class="card-body">
-                    <router-outlet></router-outlet>
+                    <router-outlet (activate)="activated($event)"></router-outlet>
                 </div>
             </div>
         </div>
