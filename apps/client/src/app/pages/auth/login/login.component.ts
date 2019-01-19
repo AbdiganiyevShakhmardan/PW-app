@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Abstract } from '../../abstract';
+
+declare let alertify: any;
 
 @Component({
     selector: 'pw-login',
@@ -28,10 +30,15 @@ export class LoginComponent extends Abstract implements OnInit {
         if(this.logForm.invalid) {
             return;
         }
-        // const res = await this.backend.auth.login(this.logForm.value);
-        // console.log(res);
 
-        this.router.navigate(['/transaction']);
+        try {
+            const res = await this.backend.auth.signIn(this.logForm.value);
+            console.log(res);
+            this.router.navigate(['/transaction']);
+        } catch (e) {
+        } finally {
+
+        }
     }
 
 }

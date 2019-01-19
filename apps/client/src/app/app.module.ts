@@ -13,7 +13,7 @@ import { UiSharedModule } from '@pw/ui-shared';
         BrowserModule,
         NxModule.forRoot(),
         AuthRoutingModule,
-        BackendModule,
+        BackendModule.forRoot(),
         UiSharedModule.forRoot()
     ],
     providers: [],
