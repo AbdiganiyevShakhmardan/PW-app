@@ -10,6 +10,10 @@ export class MainComponent implements OnInit {
 
     showArrow = false;
 
+    get header() {
+        return 'Recent transactions' ? !this.showArrow : 'Transfering'
+    }
+
     constructor() { }
 
     ngOnInit() {

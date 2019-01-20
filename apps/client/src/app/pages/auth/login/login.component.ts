@@ -12,7 +12,7 @@ declare let alertify: any;
 })
 export class LoginComponent extends Abstract implements OnInit {
 
-    logForm = this.formBuilder.group({
+    logForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required]
     });
@@ -22,7 +22,7 @@ export class LoginComponent extends Abstract implements OnInit {
 
     get f(): any { return this.logForm.controls; }
 
-    constructor(injector: Injector, private formBuilder: FormBuilder) {super(injector);}
+    constructor(injector: Injector, private fb: FormBuilder) {super(injector);}
 
     ngOnInit() {
     }

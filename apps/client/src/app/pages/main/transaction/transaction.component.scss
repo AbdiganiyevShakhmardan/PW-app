@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    padding: 40px 98px 15px 98px;
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            margin: unset;
+        }
+    }
+}

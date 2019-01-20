@@ -5,7 +5,7 @@
                 <div><span>PW</span> available</div>
                 <div>25 500.52</div>
             </div>
-            <div class="card">
+            <div class="card" routerLink="/transaction/transfer">
                 <img src="assets/icons/dollar.svg" alt="">
                 <span>Transfer</span>
             </div>
@@ -13,8 +13,8 @@
         <div class="col-md-6 rightSide">
             <div class="card">
                 <div class="card-header text-center">
-                    <img *ngIf="showArrow" src="assets/icons/back-arrow.svg" alt="" routerLink="/transaction/history">
-                    Recent transactions
+                    <img *ngIf="showArrow" src="assets/icons/back-arrow.svg" alt="" routerLink="/transaction">
+                    {{ header }}
                 </div>
                 <div class="card-body">
                     <router-outlet (activate)="activated($event)"></router-outlet>

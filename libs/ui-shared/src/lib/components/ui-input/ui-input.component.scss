@@ -1,3 +1,26 @@
 :host {
     display: block;
 }
+
+.autocomplete {
+    background: #fff;
+    border: 1px solid #BDBDBD;
+    box-shadow: 0 0 3px 0 rgba(#000, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    max-height: 400px;
+
+    .item {
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background: #D5DAEB;
+        }
+    }
+}

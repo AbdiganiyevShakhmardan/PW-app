@@ -1,6 +1,7 @@
+import { User } from '@pw/core';
+
 export class UserListRM {
-    name: string;
-    amount: number;
+    filter: string;
 
     constructor(...models: Partial<UserListRM>[]) {
         Object.assign(this, ...models);

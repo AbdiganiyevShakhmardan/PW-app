@@ -1,0 +1,25 @@
+@import "../../../../../../../libs/ui-shared/src/lib/styles/variables";
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #D5DAEB;
+    padding: 8px 20px;
+
+    div {
+        width: 25%;
+        font-size: 14px;
+    }
+
+    .amount {
+        font-size: 16px;
+
+        .in {
+            color: $in;
+        }
+
+        .out {
+            color: $out;
+        }
+    }
+}
