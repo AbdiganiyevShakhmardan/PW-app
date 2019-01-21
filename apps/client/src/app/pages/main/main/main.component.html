@@ -3,9 +3,9 @@
         <div class="col-md-3 leftSide">
             <div class="card">
                 <div><span>PW</span> available</div>
-                <div>25 500.52</div>
+                <div>{{ user.balance | seperator }}</div>
             </div>
-            <div class="card" routerLink="/transaction/transfer">
+            <div class="card" (click)="goToTransfer()">
                 <img src="assets/icons/dollar.svg" alt="">
                 <span>Transfer</span>
             </div>

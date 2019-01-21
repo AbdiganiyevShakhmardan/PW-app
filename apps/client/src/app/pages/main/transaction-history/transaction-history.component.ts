@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { Abstract } from '../../abstract';
-import { Transaction } from '@pw/core';
-import { UserTransactionResponseModel } from '@pw/core';
+import { Transaction, UserTransactionResponseModel } from '@pw/core';
+import { UrlTree } from '@angular/router';
 
 @Component({
     selector: 'pw-transaction-history',
@@ -23,13 +23,21 @@ export class TransactionHistoryComponent extends Abstract implements OnInit {
             const res = await this.backend.transaction.userTransactions();
             if(res instanceof UserTransactionResponseModel) {
                 this.transactions = res.trans_token;
-                console.log(res);
             }
         } catch (e) {
 
         } finally {
 
         }
+    }
+
+    repeatTransaction(transaction: Transaction) {
+        const urlTree = new UrlTree();
+        urlTree.queryParams = {
+            name: transaction.username,
+            amount: transaction.amount*(-1)
+        };
+        this.router.navigate(['/transaction/transfer'], {queryParams: urlTree.queryParams});
     }
 
 }

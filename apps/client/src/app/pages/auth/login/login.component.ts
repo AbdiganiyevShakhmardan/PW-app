@@ -37,7 +37,7 @@ export class LoginComponent extends Abstract implements OnInit {
         try {
             const res = await this.backend.auth.signIn(this.logForm.value);
             if(res instanceof SigningResponseModel) {
-                this.isAuth.successAuth(res.id_token);
+                this.helper.successAuth(res.id_token);
                 this.router.navigate(['/transaction']);
             }
         } catch (e) {

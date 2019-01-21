@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorizedService } from '../../../../../../apps/client/src/app/providers/services/authorized.service';
+import { HelperService } from '../../../../../../apps/client/src/app/providers/services/helper.service';
 import { Router } from '@angular/router';
+import { User } from '@pw/core';
 
 @Component({
     selector: 'ui-toolbar',
@@ -10,16 +11,20 @@ import { Router } from '@angular/router';
 export class UiToolbarComponent implements OnInit {
 
     get isAuth(): boolean {
-        return this.isAuthService.isAuth();
+        return this.helper.isAuth();
     }
 
-    constructor(private isAuthService: AuthorizedService, private router: Router) { }
+    get user(): User {
+        return this.helper.user();
+    }
+
+    constructor(private helper: HelperService, private router: Router) { }
 
     ngOnInit() {
     }
 
     signOut() {
-        this.isAuthService.signOut();
+        this.helper.signOut();
         this.router.navigate(['/auth/login']);
     }
 

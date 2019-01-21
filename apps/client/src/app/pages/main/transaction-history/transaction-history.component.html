@@ -4,6 +4,12 @@
     <div>Date</div>
     <div>Repeat</div>
 </div>
+<div class="wrapper font-weight-bold">
+    <ui-input></ui-input>
+    <ui-input></ui-input>
+    <ui-input></ui-input>
+    <ui-input></ui-input>
+</div>
 <ng-container *ngFor="let data of transactions">
     <div class="wrapper">
         <div>{{ data.username }}</div>
@@ -11,6 +17,6 @@
             <span [ngClass]="data.amount < 0 ? 'out' : 'in'">{{ data.amount | seperator }}</span>/
             <span>{{ data.balance | seperator }}</span></div>
         <div>{{ data.date }}</div>
-        <button class="btn btn-outline-primary btn-sm">Repeat</button>
+        <button *ngIf="data.amount < 0" class="btn btn-outline-primary btn-sm" (click)="repeatTransaction(data)">Repeat</button>
     </div>
 </ng-container>

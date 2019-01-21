@@ -51,7 +51,7 @@ export class RegisterComponent extends Abstract implements OnInit {
         try {
             const res = await this.backend.auth.signUp(model);
             if(res instanceof SigningResponseModel) {
-                this.isAuth.successAuth(res.id_token);
+                this.helper.successAuth(res.id_token);
                 this.router.navigate(['/transaction']);
             }
         } catch (e) {

@@ -2,7 +2,7 @@ import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Injector, OnDestroy
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Backend } from '@pw/backend';
-import { AuthorizedService } from '../providers/services/authorized.service';
+import { HelperService } from '../providers/services/helper.service';
 
 export class Abstract implements OnInit, OnDestroy, AfterViewInit, AfterContentInit{
 
@@ -15,14 +15,14 @@ export class Abstract implements OnInit, OnDestroy, AfterViewInit, AfterContentI
     protected changeDetector: ChangeDetectorRef;
     protected route: ActivatedRoute;
     protected router: Router;
-    protected isAuth: AuthorizedService;
+    protected helper: HelperService;
 
     constructor(protected injector: Injector) {
         this.backend = this.injector.get(Backend);
         this.changeDetector = this.injector.get(ChangeDetectorRef);
         this.router = this.injector.get(Router);
         this.route = this.injector.get(ActivatedRoute);
-        this.isAuth = this.injector.get(AuthorizedService);
+        this.helper = this.injector.get(HelperService);
     }
 
     ngOnInit() {}

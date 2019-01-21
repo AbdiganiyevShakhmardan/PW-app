@@ -1,15 +1,16 @@
 <form [formGroup]="trForm" (ngSubmit)="createTransaction()">
     <div class="form-group">
         <ui-input #autocomplete (autocompleteSelected)="autocompleteSelectedHandler($event)" [autocompleteDisplay]="autocompleteDisplay"
-                  [autocompleteItems]="users" formControlName="name" placeholder="Username"></ui-input>
+                  [autocompleteItems]="users" formControlName="name" placeholder="Search by name"></ui-input>
         <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
             <div *ngIf="f.name.errors.required">Username is required</div>
         </div>
     </div>
     <div class="form-group">
-        <ui-input formControlName="amount" placeholder="Transfer amount"></ui-input>
-        <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
-            <div *ngIf="f.amount.errors.required">Amount is required</div>
+        <ui-input formControlName="amount" placeholder="Transfer amount" type="number"></ui-input>
+        <div *ngIf="submitted && (f.amount.errors || trForm.errors)" class="invalid-feedback">
+            <div *ngIf="f.amount.errors && (f.amount.errors.required || f.amount.errors.minlength)">Amount is required</div>
+            <div *ngIf="!f.amount.errors && trForm.errors">Not enough balance</div>
         </div>
     </div>
 

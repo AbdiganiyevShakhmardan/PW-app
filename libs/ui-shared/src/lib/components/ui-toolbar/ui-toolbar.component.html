@@ -10,7 +10,7 @@
                 <button class="btn btn-primary" routerLink="/auth/login">Sign in</button>
             </ng-container>
             <ng-template #isAuthTemplate>
-                <a class="mr-3">His name</a>
+                <a class="mr-3">{{ user.name }}</a>
                 <button class="btn btn-danger" (click)="signOut()">Sign out</button>
             </ng-template>
         </div>
