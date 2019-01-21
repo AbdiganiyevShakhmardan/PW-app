@@ -3,8 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Abstract } from '../../abstract';
 import { SigningResponseModel } from '@pw/core';
 
-declare let alertify: any;
-
 @Component({
     selector: 'pw-login',
     templateUrl: './login.component.html',

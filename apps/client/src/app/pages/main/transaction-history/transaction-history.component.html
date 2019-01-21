@@ -1,17 +1,23 @@
 <div class="wrapper font-weight-bold">
-    <div>Name</div>
-    <div>Amt/Bal</div>
+    <div>Name <i (click)="selectedSort = 'byName'" class="fa fa-caret-down"
+                 [class.active]="selectedSort === 'byName'" [class.fa-caret-up]="selectedSort === 'byName' && !asc"></i>
+    </div>
+    <div>Amt/Bal <i (click)="selectedSort = 'byAmount'" class="fa fa-caret-down"
+                    [class.active]="selectedSort === 'byAmount'" [class.fa-caret-up]="selectedSort === 'byAmount' && !asc"></i>
+    </div>
     <div>Date</div>
-    <div>Repeat</div>
+    <div (click)="filterList()">Repeat</div>
 </div>
 <div class="wrapper font-weight-bold">
-    <ui-input></ui-input>
-    <ui-input></ui-input>
-    <ui-input></ui-input>
-    <ui-input></ui-input>
+    <div>
+        <ui-input class="small" placeholder="Name" (input)="filterList($event.target.value, 'name')"></ui-input>
+    </div>
+    <div>
+        <ui-input class="small" placeholder="Amount" (input)="filterList($event.target.value, 'amount')"></ui-input>
+    </div>
 </div>
-<ng-container *ngFor="let data of transactions">
-    <div class="wrapper">
+<ng-container *ngIf="fTransactions.length && !query">
+    <div class="wrapper" *ngFor="let data of fTransactions">
         <div>{{ data.username }}</div>
         <div class="amount">
             <span [ngClass]="data.amount < 0 ? 'out' : 'in'">{{ data.amount | seperator }}</span>/
@@ -19,4 +25,7 @@
         <div>{{ data.date }}</div>
         <button *ngIf="data.amount < 0" class="btn btn-outline-primary btn-sm" (click)="repeatTransaction(data)">Repeat</button>
     </div>
+</ng-container>
+<ng-container *ngIf="!fTransactions.length && !query">
+    <h5>no transaction found</h5>
 </ng-container>

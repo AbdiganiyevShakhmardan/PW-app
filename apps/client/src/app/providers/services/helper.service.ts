@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Transaction, User } from '@pw/core';
+import { User } from '@pw/core';
 import { Backend } from '@pw/backend';
 
 @Injectable({
@@ -42,5 +42,30 @@ export class HelperService {
     setUser(user: User) {
         localStorage.removeItem('user');
         localStorage.setItem('user', JSON.stringify(user));
+    }
+
+    filter(arr) {
+        const result = [];
+        for(let j = 0; j < arr.length - 1; j++) {
+            for(let i = j+1; i < arr.length; i++) {
+                if(arr[j].id === arr[i].id) {
+                    result.push(arr[j]); break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    sort(arr, type: 'byName' | 'byAmount', reverse: boolean) {
+        if(type === 'byName') {
+            arr.sort((a,b) => (a.username > b.username) ? 1 : ((b.username > a.username) ? -1 : 0));
+
+            return reverse ? arr.reverse() : arr;
+        } else {
+            arr.sort((a,b) => (a.amount > b.amount) ? 1 : ((b.amount > a.amount) ? -1 : 0));
+
+            return reverse ? arr.reverse() : arr;
+        }
     }
 }

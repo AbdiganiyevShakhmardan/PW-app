@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <ui-input formControlName="passRep" placeholder="Confirm password" type="password" [ngClass]="{ 'error': submitted && f.passRep.errors }"></ui-input>
+                        <ui-input formControlName="passRep" placeholder="Confirm password" type="password" [ngClass]="{ 'error': submitted && (f.passRep.errors || regForm.errors) }"></ui-input>
                         <div *ngIf="submitted && (f.passRep.errors || regForm.errors)" class="invalid-feedback">
                             <div *ngIf="f.passRep.errors && f.passRep.errors.required">Please repeat the password</div>
                             <div *ngIf="!f.passRep.errors && regForm.errors">Password must match</div>

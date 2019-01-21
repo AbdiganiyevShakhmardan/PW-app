@@ -1,5 +1,9 @@
 @import "../../../../../../../libs/ui-shared/src/lib/styles/variables";
 
+h5 {
+    text-align: center;
+}
+
 .wrapper {
     display: flex;
     align-items: center;
@@ -9,6 +13,10 @@
     div {
         width: 25%;
         font-size: 14px;
+
+        i {
+            cursor: pointer;
+        }
     }
 
     .amount {
@@ -21,5 +29,9 @@
         .out {
             color: $out;
         }
+    }
+
+    .active {
+        color: $primary;
     }
 }
