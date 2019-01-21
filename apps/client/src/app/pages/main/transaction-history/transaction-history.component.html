@@ -6,7 +6,7 @@
                     [class.active]="selectedSort === 'byAmount'" [class.fa-caret-up]="selectedSort === 'byAmount' && !asc"></i>
     </div>
     <div>Date</div>
-    <div (click)="filterList()">Repeat</div>
+    <div>Repeat</div>
 </div>
 <div class="wrapper font-weight-bold">
     <div>
@@ -27,5 +27,5 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!fTransactions.length && !query">
-    <h5>no transaction found</h5>
+    <h5>No transaction found</h5>
 </ng-container>
